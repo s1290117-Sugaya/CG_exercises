@@ -20,6 +20,8 @@ static int g_proj_mode = PERSP;
 enum { OPENGL, OWN };
 static int g_func_mode = OPENGL;
 
+static int g_copy_num = 0;
+
 // window dimension
 static int g_width = 800;
 static int g_height = 800;
@@ -220,7 +222,7 @@ static void display(void) {
     }
 
     drawIcosahedron();
-    drawMultipleCopies(5);
+    drawMultipleCopies(g_copy_num);
 
     glPopMatrix();
 
@@ -258,7 +260,16 @@ static void keyboard(unsigned char k, int x, int y) {
         // Complete: 
         // Allow to switch between OpenGL transformations and your implementations
     case 'f':
+    case 'F':
 	g_func_mode = (1 - g_func_mode);
+	break;
+
+    case 'n':
+	if(g_copy_num > 0) g_copy_num--;
+	break;
+
+    case 'N':
+	if(g_copy_num < 5) g_copy_num++;
 	break;
 
     case 'p':
