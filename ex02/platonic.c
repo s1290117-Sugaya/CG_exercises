@@ -78,8 +78,8 @@ static void myOrtho(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GL
     const GLfloat m[16] = {
     2/(right-left), 0, 0, 0,
     0, 2/(top-bottom), 0, 0,
-    0, 0, 2/(n-f), (f+n)/(n-f),
-    -(right+left)/(right-left), -(top+bottom)/(top-bottom), 0, 1
+    0, 0, 2/(n-f), 0,
+    -(right+left)/(right-left), -(top+bottom)/(top-bottom), (f+n)/(n-f), 1
     };
     glMultMatrixf(m);
 }
