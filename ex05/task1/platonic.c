@@ -21,13 +21,14 @@ static char filename[13] = "platonic.off";
 
 static void saveAsOFF(GLfloat vertices[][3], int faces[][3], int numOfVertices, int numOfFaces){
     FILE *fp = fopen(filename, "w");
-	
+
+    fprintf(fp, "OFF\n");	
     fprintf(fp, "%d %d 0\n", numOfVertices, numOfFaces);
     for(int i=0; i<numOfVertices; i++){
 	fprintf(fp, "%f %f %f\n", vertices[i][0], vertices[i][1], vertices[i][2]);
     }
     for(int i=0; i<numOfFaces; i++){
-	fprintf(fp, "%d %d %d\n", faces[i][0], faces[i][1], faces[i][2]);
+	fprintf(fp, "3 %d %d %d\n", faces[i][0], faces[i][1], faces[i][2]);
     }
 
     fclose(fp);
