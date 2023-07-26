@@ -454,6 +454,7 @@ void heatStep(TriangleMesh* tri_mesh) {
 	mulAV(lambda, l, &l);
 	add(tri_mesh->_vertices[i], l, &tri_mesh->_vertices[i]);
     }
+    computeVertexNormals(tri_mesh);
 }
 
 // Complete
